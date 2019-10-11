@@ -25,6 +25,23 @@ class ToDoApp extends Component {
     this.setState({ notes: newNotes, displayedNotes: newNotes })
   }
 
+  handleNoteDelete = ({ id }) => {
+    const { notes } = this.state
+    const newNotes = notes.filter(note => note.id !== id)
+    this.setState({ notes: newNotes, displayedNotes: newNotes })
+  }
+
+  hadleNoteDone = ({ id }) => {
+    const { notes } = this.state
+    const newNotes = notes.map(note => {
+      if (note.id === id) {
+        note.isDone = !note.isDone
+      }
+      return note
+    })
+    this.setState({ notes: newNotes, displayedNotes: newNotes })
+  }
+
   _updateLocalStorage = () => {
     const notes = JSON.stringify(this.state.notes)
     localStorage.setItem('todoNotes', notes)
@@ -58,7 +75,12 @@ class ToDoApp extends Component {
           <h1 className="todo-app__title">ToDo App</h1>
         </header>
         <NoteEditor onNoteAdd={this.handleNoteAdd} />
-        <NotesList notes={displayedNotes} />
+        <NotesList
+          notes={displayedNotes}
+          onNoteDelete={this.handleNoteDelete}
+          onNoteDone={this.hadleNoteDone}
+          onNoteDone2={this.hadleNoteDone2}
+        />
         <FiltersList />
       </div>
     )
