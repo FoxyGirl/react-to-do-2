@@ -1,0 +1,123 @@
+@import '../styles/_utility.scss';
+
+.note {
+  position: relative;
+  margin-bottom: 15px;
+  background-color: #fff;
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+    .note__del,
+    .note__edit {
+      display: block;
+      cursor: pointer;
+    }
+  }
+
+  &.note--done {
+    text-decoration: line-through;
+  }
+
+  &.note--edit {
+    &::after {
+      content: '';
+      display: block;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 100;
+      background-color: rgba(0, 0, 0, 0.19);
+    }
+
+    .note__editing {
+      display: block;
+      z-index: 105;
+    }
+  }
+
+  &__label {
+    display: block;
+    position: relative;
+    min-height: 40px;
+    padding: 10px 90px 10px 40px;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: 9px;
+      z-index: 1;
+      width: 16px;
+      height: 16px;
+      border: 2px solid $gray;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  input[type='checkbox']:checked ~ .note__label::before {
+    width: 21px;
+    height: 10px;
+    border-color: $green;
+    border-top-style: none;
+    border-right-style: none;
+    transform: rotate(-45deg);
+  }
+
+  &__del {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    height: 100%;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: $red;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__edit {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    height: 100%;
+    padding: 7px 10px;
+    display: none;
+    font-size: 18px;
+    color: lightblue;
+  }
+
+  &__editing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px 0 30px;
+    font-size: 16px;
+    font-family: Tahoma, sans-serif;
+
+    &:focus {
+      outline: 1px solid $red;
+    }
+  }
+}
+
+.touch-device {
+  .note__edit {
+    display: block;
+  }
+
+  .note__del {
+    display: block;
+  }
+}

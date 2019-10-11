@@ -1,0 +1,7 @@
+@import '../styles/utility';
+
+.notes-list {
+  @include ul-reset;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

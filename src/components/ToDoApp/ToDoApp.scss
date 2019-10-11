@@ -1,0 +1,20 @@
+@import '../styles/_utility.scss';
+
+.todo-app {
+  max-width: 760px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.todo-app__header {
+  padding: 40px;
+  border-bottom: 3px double $gray;
+}
+
+.todo-app__title {
+  margin: 0;
+  text-align: center;
+  font-weight: 400;
+  color: $red;
+}
