@@ -1,0 +1,34 @@
+// Variables
+$red: #da3333;
+$green: #057105;
+$gray: #999999;
+$text-color: #524d4d;
+$btn-color: #44c767;
+
+// Other
+
+@mixin reset-btn {
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  line-height: normal;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  width: auto;
+  cursor: pointer;
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+@mixin ul-reset {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
